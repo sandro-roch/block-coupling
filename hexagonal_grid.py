@@ -6,6 +6,10 @@
 # a fixed boundary vertex d (by symmetry, this boundary vertex can be assumed to be fixed).
 
 import itertools
+import sys
+
+
+print("PYTHON VERSION:\n" + sys.version)
 
 
 class NoAdmissibleFilling(Exception):
