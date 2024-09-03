@@ -47,7 +47,7 @@ def expected_weight(p_block_fillings, p_boundary_constraint):
     return sum(possible_weights) / len(possible_weights)
 
 
-for k in range(3, 7):
+for k in range(2, 7):
     # Compute the block divergence of k-heights for k = 3, 4, 5, 6
 
     # Step 1: Iterate over all 6-tuples of {0, ..., k} and keep those that are valid fillings.
