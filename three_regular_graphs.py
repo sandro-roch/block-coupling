@@ -1,6 +1,23 @@
-import math
 
+# This program is part of the proof for rapidly mixingness of 3-heights on 3-regular planar graphs. The blocks are
+# described in the article. This script goes for k=2 and k=3 through all cases described in the article and bounds
+# the block divergence. In the output, each line corresponds to one of these computations. We use a general framework
+# for computing the block divergence of small blocks which can be found in generic_block.py . For transparency,
+# with each computation, we not just log the results but also the parameters that are used when calling the
+# computation. This includes the graph structure of the block.
+
+import math
+import sys
 import generic_block
+
+
+print("PYTHON VERSION:\n" + sys.version)
+
+# column description line for reading the output as a CSV
+#
+print("k; case; number of internally valid fillings; number of valid boundary constraints; result (block divergence); "
+      "input number_vertices; input edges; input number_boundary_vertices; input boundary_edges; input "
+      "block_boundary_edges")
 
 for k in range(2, 4):
 

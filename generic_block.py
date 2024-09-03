@@ -39,9 +39,6 @@ class Block:
         self.boundary_constraints = self.compute_all_k_heights(self.k, self.number_boundary_vertices,
                                                                       self.boundary_edges)
 
-        print("Number of fillings: " + str(len(self.fillings)))
-        print("Number of boundary constraints: " + str(len(self.boundary_constraints)))
-
     @staticmethod
     def compute_all_k_heights(k, n, edges):
 

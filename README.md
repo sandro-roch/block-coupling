@@ -4,7 +4,7 @@ This repository contains the supplementary code for the research article *Block 
 
 ## Requirements
 
-All scripts can be executed using Python 3. The exact version that we used for obtaining our data is Python 3.6.8 . The scripts use only the built-in-modules `math`, `random` and `itertools`, so no additional packages need to be installed.
+All scripts can be executed using Python 3. The exact version that we used for obtaining our data is Python 3.6.8 . The scripts use only the built-in-modules `sys`, `math`, `random` and `itertools`, so no additional packages need to be installed.
 
 ## Code Files & Execution
 
