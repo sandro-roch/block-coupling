@@ -1,0 +1,8 @@
+PYTHON VERSION:
+3.6.8 (default, Jan 16 2024, 08:27:02) 
+[GCC 8.5.0 20210514 (Red Hat 8.5.0-20)]
+Block divergence for k=2 : 0.798657718120805
+Block divergence for k=3 : 1.831904761904763
+Block divergence for k=4 : 2.8928571428571423
+Block divergence for k=5 : 3.0
+Block divergence for k=6 : 3.0
