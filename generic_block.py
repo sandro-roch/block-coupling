@@ -13,20 +13,23 @@ class NoAdmissibleFilling(Exception):
 
 class Block:
 
-    # We use 0-based indices for the vertices.
-    # k:                                        The k of the k-heights
-    # number_vertices:                          Number of vertices within the block. Vertex indices
-    #                                           are 0, ..., number_vertices - 1
-    # edges:                                    Edges between vertices in the block, given as a list of tuples
-    #                                           of vertex indices.
-    # number_boundary_vertices:                 Number of vertices on the boundary, boundary vertex indices are
-    #                                           0, ..., number_boundary_vertices - 1
-    # boundary_edges:                           Edges between vertices in the boundary, given as a list of tuples
-    #                                           of boundary vertex indices
-    # block_boundary_edges:                     Edges between a block vertex and a boundary vertex, given as a list
-    #                                           of tuples of a block vertex index and a boundary vertex index
-
     def __init__(self, k, number_vertices, edges, number_boundary_vertices, boundary_edges, block_boundary_edges):
+
+        """
+        Remark: We use 0-based indices for the vertices.
+
+        :param k:                           The k of the k-heights
+        :param number_vertices:             Number of vertices within the block.
+                                            Vertex indices are 0, ..., number_vertices - 1 .
+        :param edges:                       Edges between vertices in the block, given as a list of tuples of vertex
+                                            indices.
+        :param number_boundary_vertices:    Number of vertices on the boundary,
+                                            boundary vertex indices are 0, ..., number_boundary_vertices - 1
+        :param boundary_edges:              Edges between vertices in the boundary, given as a list of tuples
+                                            of boundary vertex indices
+        :param block_boundary_edges:        Edges between a block vertex and a boundary vertex, given as a list of
+                                            tuples of a block vertex in dex and a boundary vertex index.
+        """
 
         self.k = k
         self.number_vertices = number_vertices
@@ -42,6 +45,14 @@ class Block:
     @staticmethod
     def compute_all_k_heights(k, n, edges):
 
+        """
+        Computes all k-heights of the graph with vertices 0, ..., n-1 and edges as given in the edges parameter
+        :param k:       The parameter k of the k-heights
+        :param n:       Number of vertices which are indexed as 0, ..., n-1
+        :param edges:   List of tuples of vertices that form an edge
+        :return:        List of n-tuples which represent all valid k-heights
+        """
+
         result = []
 
         for k_height in itertools.product(range(k + 1), repeat=n):
@@ -56,6 +67,15 @@ class Block:
         return result
 
     def compute_expected_weight(self, boundary_constraint):
+
+        """
+        Computes the expected weight of a uniformly sampled k-height conditioned on the boundary_constraint.
+        Iterates over all admissible fillings and takes the average over the weights.
+        If there is no admissible filling with that boundary constraint, i.e. the boundary constraint is not
+        extensible, then a NoAdmissibleFilling exception is raised.
+        :param boundary_constraint:     Boundary constraint given as a tuple of integers.
+        :return:                        Float. Expected weight.
+        """
 
         total_weight_sum = 0
         number_admissible_fillings = 0
@@ -79,6 +99,13 @@ class Block:
     # computes the expected weight difference when doing an augmentation at boundary vertex augmentation_vertex
 
     def block_divergence(self, augmentation_vertex):
+
+        """
+        Computes the expected weight difference all cover relations maximized over all cover relations that differ
+        exactly on augmentation_vertex.
+        :param augmentation_vertex:     Index of the vertex that is augmented by one.
+        :return:                        Float. Expected weight difference.
+        """
 
         adjacent_boundary_vertices = []
         for boundary_edge in self.boundary_edges:
