@@ -1,8 +1,8 @@
 
-# This program is part of the proof for rapidly mixingness of 3-heights on hexagonal grids. A block B consist of a
+# This program is part of the proof for rapidly mixingness of k-heights on hexagonal grids. A block B consist of a
 # single hexagon, whose assignment will be encoded as a 6-tuple in clockwise (or, by symmetry, counterclockwise)
 # order. Each of these six vertices has exactly one boundary neighbor. In total, these six boundary neighbors can
-# impose 3^6 = 729 different boundary restrictions to B, and there are 2*3^5 different cover relations that differ on
+# impose (k+1)^6 different boundary restrictions to B, and there are k*(k+1)^5 different cover relations that differ on
 # a fixed boundary vertex d (by symmetry, this boundary vertex can be assumed to be fixed).
 
 import itertools
@@ -48,7 +48,7 @@ def expected_weight(p_block_fillings, p_boundary_constraint):
 
 
 for k in range(2, 7):
-    # Compute the block divergence of k-heights for k = 3, 4, 5, 6
+    # Compute the block divergence of k-heights for k = 2, 3, 4, 5, 6
 
     # Step 1: Iterate over all 6-tuples of {0, ..., k} and keep those that are valid fillings.
 
@@ -65,7 +65,7 @@ for k in range(2, 7):
         if is_valid_filling:
             block_fillings.append(filling)
 
-    # Step 2: Compute 486 cover relations, i.e. pairs of boundary constraints that differ on exactly one vertex by one.
+    # Step 2: Compute k*(k+1)^5 cover relations, i.e. pairs of boundary constraints that differ on exactly one vertex by one.
     #
     # By symmetry, it is sufficient to only consider cover relations on the boundary of B that differ on the neighbor
     # vertex of the first block vertex (index 0 in the tuple).
