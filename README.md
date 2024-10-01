@@ -6,6 +6,10 @@ This repository contains the supplementary code for the research article *Block 
 
 All scripts can be executed using Python 3. The exact version that we used for obtaining our data is Python 3.6.8 . The scripts use only the built-in-modules `sys`, `math`, `random` and `itertools`, so no additional packages need to be installed.
 
+If you prefer to execute the scripts in a docker container, for example, for computing the block divergence in the case of hexagonal grids (see following section), you may use the following command (assuming a unix system and a running docker environment):
+
+        docker run -it --rm --name block-divergence-hexagonal-grid -v "$PWD":/usr/src/myapp -w /usr/src/myapp python:3.6.8 python hexagonal_grid.py > ./output/hexagonal_grid.txt
+
 ## Code Files & Execution
 
 * rectangular_grid.py: Computes the block divergence of (4 x 4)-blocks in toroidal hexagonal grid graphs; see Section 4.1 in the article. Run by:
